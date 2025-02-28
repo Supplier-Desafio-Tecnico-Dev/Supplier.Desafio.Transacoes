@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Supplier.Desafio.Transacoes.DataTransfer\Supplier.Desafio.Transacoes.DataTransfer.csproj" />
     <ProjectReference Include="..\Supplier.Desafio.Transacoes.Dominio\Supplier.Desafio.Transacoes.Dominio.csproj" />
   </ItemGroup>

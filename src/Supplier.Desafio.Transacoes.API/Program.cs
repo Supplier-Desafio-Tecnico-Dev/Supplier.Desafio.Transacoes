@@ -1,5 +1,7 @@
 using Supplier.Desafio.Clientes.Infra;
 using Supplier.Desafio.Transacoes.Aplicacao.Core.Notificacoes;
+using Supplier.Desafio.Transacoes.Aplicacao.Core.RabbitMQ.Interfaces;
+using Supplier.Desafio.Transacoes.Aplicacao.Core.RabbitMQ;
 using Supplier.Desafio.Transacoes.Aplicacao.Transacoes.Servicos;
 using Supplier.Desafio.Transacoes.Aplicacao.Transacoes.Servicos.Interfaces;
 using Supplier.Desafio.Transacoes.Infra.Transacoes.Repositorios;
@@ -20,6 +22,8 @@ builder.Services.AddScoped<ITransacoesRepositorio, TransacoesRepositorio>();
 
 builder.Services.AddScoped<INotificador, Notificador>();
 builder.Services.AddScoped<ITransacoesAppServico, TransacoesAppServico>();
+
+builder.Services.AddScoped(typeof(IRabbitMQPublisher<>), typeof(RabbitMQPublisher<>));
 
 var app = builder.Build();
 
