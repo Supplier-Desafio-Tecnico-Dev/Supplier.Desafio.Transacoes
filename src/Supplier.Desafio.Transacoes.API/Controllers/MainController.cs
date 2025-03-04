@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Supplier.Desafio.Transacoes.Aplicacao.Core.Notificacoes;
+using Supplier.Desafio.Commons.Notificacoes;
 
 namespace Supplier.Desafio.Transacoes.API.Controllers;
 

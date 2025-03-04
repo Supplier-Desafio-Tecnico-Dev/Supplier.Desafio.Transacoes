@@ -1,9 +1,9 @@
-﻿using Supplier.Desafio.Transacoes.Dominio.Transacoes.Entidades;
+﻿using Supplier.Desafio.Commons.Data;
+using Supplier.Desafio.Transacoes.Dominio.Transacoes.Entidades;
 
-namespace Supplier.Desafio.Transacoes.Infra.Transacoes.Repositorios
+namespace Supplier.Desafio.Transacoes.Dominio.Transacoes.Repositorios;
+
+public interface ITransacoesRepositorio : IRepositorioDapper<Transacao>
 {
-    public interface ITransacoesRepositorio
-    {
-        Task<int> InserirAsync(Transacao transacao);
-    }
+    Task<int> InserirAsync(Transacao transacao);
 }

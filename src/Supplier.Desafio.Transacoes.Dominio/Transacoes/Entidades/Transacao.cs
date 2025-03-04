@@ -1,51 +1,51 @@
-﻿using Supplier.Desafio.Transacoes.Dominio.Core;
+﻿using Supplier.Desafio.Commons.Dominio;
+using Supplier.Desafio.Commons.Dominio.Exceptions;
 
-namespace Supplier.Desafio.Transacoes.Dominio.Transacoes.Entidades
+namespace Supplier.Desafio.Transacoes.Dominio.Transacoes.Entidades;
+
+public class Transacao : Entity
 {
-    public class Transacao : Entity
+    public virtual Guid IdTransacao { get; protected set; }
+    public virtual int IdCliente { get; protected set; }
+    public virtual decimal ValorSimulacao { get; protected set; }
+    public virtual string Status { get; protected set; } = string.Empty;
+
+    public Transacao() { }
+
+    public Transacao(int idCliente, decimal valorSimulacao, string status)
     {
-        public virtual Guid IdTransacao { get; protected set; }
-        public virtual int IdCliente { get; protected set; }
-        public virtual decimal ValorSimulacao { get; protected set; }
-        public virtual string Status { get; protected set; } = string.Empty;
+        SetIdTransacao();
+        SetIdCliente(idCliente);
+        SetValorSimulacao(valorSimulacao);
+        SetStatus(status);
+    }
 
-        public Transacao() { }
+    public virtual void SetIdTransacao()
+    {
+        IdTransacao = Guid.NewGuid();
+    }
 
-        public Transacao(int idCliente, decimal valorSimulacao, string status)
-        {
-            SetIdTransacao();
-            SetIdCliente(idCliente);
-            SetValorSimulacao(valorSimulacao);
-            SetStatus(status);
-        }
+    public virtual void SetIdCliente(int idCliente)
+    {
+        if (idCliente <= 0)
+            throw new DominioException("Id do cliente inválido");
 
-        public virtual void SetIdTransacao()
-        {
-            IdTransacao = Guid.NewGuid();
-        }
+        IdCliente = idCliente;
+    }
 
-        public virtual void SetIdCliente(int idCliente)
-        {
-            if (idCliente <= 0)
-                throw new DomainException("Id do cliente inválido");
+    public virtual void SetValorSimulacao(decimal valorSimulacao)
+    {
+        if (valorSimulacao <= 0)
+            throw new DominioException("Valor da simulação inválido");
 
-            IdCliente = idCliente;
-        }
+        ValorSimulacao = valorSimulacao;
+    }
 
-        public virtual void SetValorSimulacao(decimal valorSimulacao)
-        {
-            if (valorSimulacao <= 0)
-                throw new DomainException("Valor da simulação inválido");
+    public virtual void SetStatus(string status)
+    {
+        if (string.IsNullOrWhiteSpace(status))
+            throw new DominioException("Status inválido");
 
-            ValorSimulacao = valorSimulacao;
-        }
-
-        public virtual void SetStatus(string status)
-        {
-            if (string.IsNullOrWhiteSpace(status))
-                throw new DomainException("Status inválido");
-
-            Status = status;
-        }
+        Status = status;
     }
 }

@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Supplier.Desafio.Transacoes.Aplicacao\Supplier.Desafio.Transacoes.Aplicacao.csproj" />
-    <ProjectReference Include="..\Supplier.Desafio.Transacoes.Infra\Supplier.Desafio.Transacoes.Infra.csproj" />
+    <ProjectReference Include="..\Supplier.Desafio.Transacoes.Ioc\Supplier.Desafio.Transacoes.Ioc.csproj" />
   </ItemGroup>
 
 </Project>

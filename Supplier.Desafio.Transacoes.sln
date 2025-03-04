@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supplier.Desafio.Transacoes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supplier.Desafio.Transacoes.Dominio", "src\Supplier.Desafio.Transacoes.Dominio\Supplier.Desafio.Transacoes.Dominio.csproj", "{5842E3D5-4DC4-46B8-82CB-1073A0B5BF56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supplier.Desafio.Transacoes.Ioc", "src\Supplier.Desafio.Transacoes.Ioc\Supplier.Desafio.Transacoes.Ioc.csproj", "{A2D96C28-EA2A-4B9C-8755-C3677D784391}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{5842E3D5-4DC4-46B8-82CB-1073A0B5BF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5842E3D5-4DC4-46B8-82CB-1073A0B5BF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5842E3D5-4DC4-46B8-82CB-1073A0B5BF56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D96C28-EA2A-4B9C-8755-C3677D784391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D96C28-EA2A-4B9C-8755-C3677D784391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D96C28-EA2A-4B9C-8755-C3677D784391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D96C28-EA2A-4B9C-8755-C3677D784391}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +57,6 @@ Global
 		{A9F915C8-5DD6-453F-B82A-758A5730E2CD} = {276D18ED-CC72-4663-8B25-D439E7A3D955}
 		{08D8A9C9-A737-4F58-BC77-2BB66626CEAE} = {276D18ED-CC72-4663-8B25-D439E7A3D955}
 		{5842E3D5-4DC4-46B8-82CB-1073A0B5BF56} = {276D18ED-CC72-4663-8B25-D439E7A3D955}
+		{A2D96C28-EA2A-4B9C-8755-C3677D784391} = {276D18ED-CC72-4663-8B25-D439E7A3D955}
 	EndGlobalSection
 EndGlobal

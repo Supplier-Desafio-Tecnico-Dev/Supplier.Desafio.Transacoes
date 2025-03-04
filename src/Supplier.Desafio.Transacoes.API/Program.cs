@@ -1,9 +1,9 @@
-using Supplier.Desafio.Clientes.Infra;
-using Supplier.Desafio.Transacoes.Aplicacao.Core.Notificacoes;
-using Supplier.Desafio.Transacoes.Aplicacao.Core.RabbitMQ.Interfaces;
-using Supplier.Desafio.Transacoes.Aplicacao.Core.RabbitMQ;
+using Supplier.Desafio.Commons.Data;
+using Supplier.Desafio.Commons.Middlewares;
+using Supplier.Desafio.Commons.Notificacoes;
 using Supplier.Desafio.Transacoes.Aplicacao.Transacoes.Servicos;
 using Supplier.Desafio.Transacoes.Aplicacao.Transacoes.Servicos.Interfaces;
+using Supplier.Desafio.Transacoes.Dominio.Transacoes.Repositorios;
 using Supplier.Desafio.Transacoes.Infra.Transacoes.Repositorios;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,14 +16,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+builder.Services.AddSingleton(new DapperDbContext(connectionString));
 
-builder.Services.AddSingleton(new DatabaseConnection(connectionString));
 builder.Services.AddScoped<ITransacoesRepositorio, TransacoesRepositorio>();
 
-builder.Services.AddScoped<INotificador, Notificador>();
 builder.Services.AddScoped<ITransacoesAppServico, TransacoesAppServico>();
 
-builder.Services.AddScoped(typeof(IRabbitMQPublisher<>), typeof(RabbitMQPublisher<>));
+builder.Services.AddScoped<INotificador, Notificador>();
 
 var app = builder.Build();
 
@@ -33,6 +32,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExcecaoMiddleware>();
 
 app.UseHttpsRedirection();
 

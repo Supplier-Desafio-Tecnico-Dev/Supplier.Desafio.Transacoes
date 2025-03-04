@@ -1,8 +1,3 @@
-﻿namespace Supplier.Desafio.Transacoes.DataTransfer.Transacoes.Requests
-{
-    public class TransacaoNovaRequest
-    {
-        public int IdCliente { get; set; }
-        public decimal ValorSimulacao { get; set; }
-    }
-}
+﻿namespace Supplier.Desafio.Transacoes.DataTransfer.Transacoes.Requests;
+
+public record TransacaoNovaRequest(int IdCliente, decimal ValorSimulacao);

@@ -1,29 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Supplier.Desafio.Transacoes.Aplicacao.Core.Notificacoes;
+using Supplier.Desafio.Commons.Notificacoes;
 using Supplier.Desafio.Transacoes.Aplicacao.Transacoes.Servicos.Interfaces;
 using Supplier.Desafio.Transacoes.DataTransfer.Transacoes.Requests;
 using Supplier.Desafio.Transacoes.DataTransfer.Transacoes.Responses;
 
-namespace Supplier.Desafio.Transacoes.API.Controllers.Transacoes
+namespace Supplier.Desafio.Transacoes.API.Controllers.Transacoes;
+
+[Route("api/transacoes")]
+public class TransacoesController : MainController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TransacoesController : MainController
+    private readonly ITransacoesAppServico _transacoesAppServico;
+
+    public TransacoesController(ITransacoesAppServico transacoesAppServico, INotificador notificador) : base(notificador)
     {
-        private readonly ITransacoesAppServico _transacoesAppServico;
+        _transacoesAppServico = transacoesAppServico;
+    }
 
-        public TransacoesController(INotificador notificador,
-                                    ITransacoesAppServico transacoesAppServico) : base(notificador)
-        {
-            _transacoesAppServico = transacoesAppServico;
-        }
+    [HttpPost]
+    public async Task<ActionResult<TransacaoNovaResponse>> InserirAsync(TransacaoNovaRequest request)
+    {
+        var response = await _transacoesAppServico.InserirAsync(request);
 
-        [HttpPost]
-        public async Task<ActionResult<TransacaoNovaResponse>> InserirAsync(TransacaoNovaRequest request)
-        {
-            var response = await _transacoesAppServico.InserirAsync(request);
-
-            return CustomResponse(response);
-        }
+        return CustomResponse(response);
     }
 }
