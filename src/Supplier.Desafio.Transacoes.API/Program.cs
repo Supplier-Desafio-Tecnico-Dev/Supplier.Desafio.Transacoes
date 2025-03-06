@@ -1,4 +1,5 @@
 using Supplier.Desafio.Commons.Data;
+using Supplier.Desafio.Commons.MessageBus;
 using Supplier.Desafio.Commons.Middlewares;
 using Supplier.Desafio.Commons.Notificacoes;
 using Supplier.Desafio.Transacoes.Aplicacao.Transacoes.Servicos;
@@ -23,6 +24,8 @@ builder.Services.AddScoped<ITransacoesRepositorio, TransacoesRepositorio>();
 builder.Services.AddScoped<ITransacoesAppServico, TransacoesAppServico>();
 
 builder.Services.AddScoped<INotificador, Notificador>();
+
+builder.Services.AddSingleton<IMessageBus>(new MessageBus("host=localhost:5672;timeout=10"));
 
 var app = builder.Build();
 
